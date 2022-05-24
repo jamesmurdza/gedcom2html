@@ -912,6 +912,8 @@ class Element:
         return publication
 
     def get_is_alive(self):
+        if self.get_death_year() > 0:
+            return False
         birth_year = self.get_birth_year();
         return birth_year < 0 or birth_year > 1940
 
