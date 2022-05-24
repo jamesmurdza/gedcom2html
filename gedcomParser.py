@@ -941,6 +941,7 @@ class Element:
                 for childOfChild in child.get_child_elements():
                     if childOfChild.get_tag() == GEDCOM_TAG_NICKNAME:
                         nick = childOfChild.get_value()
+                break;
         return first, last, nick
 
     def get_gender(self):
