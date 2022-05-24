@@ -57,6 +57,7 @@ class Html:
       self.__fid.write("<head>\n")
       self.__fid.write("<title>%s</title>\n" % self.person.short_name)
       self.__fid.write("<meta name=\"description\" content=\"%s\" /><meta name='viewport' content='width=device-width, initial-scale=1.0'>\n" % self.options.title) 
+      self.__fid.write("<meta name='robots' content='noindex'>\n");
       self.__fid.write("<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />\n")
       self.__fid.write("<link rel='stylesheet' type='text/css' href='css/bootstrap.min.css' />\n")
       self.__fid.write("<link rel='stylesheet' type='text/css' href='css/font-awesome.min.css' />\n")
