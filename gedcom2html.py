@@ -263,7 +263,8 @@ class Html:
       self.__fid.write("<div class='row well well-sm gedcominfo'>\n")
       self.__fid.write("<div class='col-sm-6'>\n")
       path, fname = os.path.split(self.options.file_path)
-      self.__fid.write("Gedcom file <a href='%s'>%s</a> contains %d persons<br>\n" % (fname, fname , len(self.all_persons)))
+#      self.__fid.write("Gedcom file <a href='%s'>%s</a> contains %d persons<br>\n" % (fname, fname , len(self.all_persons)))
+      self.__fid.write("%s contains %d persons<br>\n" % (self.options.title, len(self.all_persons)))
       if len(sources) > 0:
          self.__fid.write("<br><b>Sources:</b>\n")
          self.__fid.write("<ul>\n")
