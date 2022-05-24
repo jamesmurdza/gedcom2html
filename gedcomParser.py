@@ -911,6 +911,10 @@ class Element:
                 publication = child.get_value()
         return publication
 
+    def get_is_alive(self):
+        birth_year = self.get_birth_year();
+        return birth_year < 0 or birth_year > 1940
+
     def get_name(self):
         """Return a person's names as a tuple: (first, last, nick)
         :rtype: tuple
@@ -942,7 +946,11 @@ class Element:
                     if childOfChild.get_tag() == GEDCOM_TAG_NICKNAME:
                         nick = childOfChild.get_value()
                 break;
-        return first, last, nick
+
+        if not self.get_is_alive():
+            return first, last, nick
+        initial = lambda name : name[0]+"." if len(name) else name
+        return initial(first), initial(last), ""
 
     def get_gender(self):
         """Return the gender of a person in string format
@@ -977,7 +985,7 @@ class Element:
         date = ""
         place = ""
         sources = []
-        if not self.is_individual():
+        if not self.is_individual() or self.get_is_alive():
             return date, place, sources
         for child in self.get_child_elements():
             if child.get_tag() == GEDCOM_TAG_BIRTH:
